@@ -2,6 +2,30 @@ import toast from 'react-hot-toast';
 import Swal from 'sweetalert2'
 import { Confederacion, getConfederaciones, insertConfederacion, updateConfederacion, deleteConfederacion } from '@/models/confederacion/confederacionModel';
 
+async function validarDuplicado(form: Confederacion, excludeId?: number) {
+    const { data, error } = await getConfederaciones()
+    if (error || !data) {
+        return null
+    }
+
+    const registros = excludeId ? data.filter(e => e.id !== excludeId) : data
+
+    const duplicado = registros.find(e =>
+        e.nombre === form.nombre ||
+        e.region === form.region
+    )
+
+    if (duplicado) {
+        if (duplicado.nombre === form.nombre) {
+            return 'Ya existe una confederacion con ese nombre'
+        } else {
+            return 'Ya existe una confederacion con esa región'
+        }
+    } else {
+        return null
+    }
+}
+
 export async function fetchConfederaciones(setConfederacion: (e: Confederacion[]) => void) {
     const { data, error } = await getConfederaciones()
     if (error) {
@@ -12,22 +36,32 @@ export async function fetchConfederaciones(setConfederacion: (e: Confederacion[]
 }
 
 export async function addConfederacion(form: Confederacion, refresh: () => void) {
-    const { error } = await insertConfederacion(form)
-    if (error) {
-        toast.error(`No se pudo registrar la confederacion ${error.message}`)
+    const duplicado = await validarDuplicado(form)
+    if (duplicado) {
+        toast.error(duplicado)
     } else {
-        toast.success('Confederacion registrada correctamente')
-        refresh()
+        const { error } = await insertConfederacion(form)
+        if (error) {
+            toast.error(`No se pudo registrar la confederacion ${error.message}`)
+        } else {
+            toast.success('Confederacion registrada correctamente')
+            refresh()
+        }
     }
 }
 
 export async function editConfederacion(id: number, form: Confederacion, refresh: () => void) {
-    const { error } = await updateConfederacion(id, form)
-    if (error) {
-        toast.error(`No se pudo actualizar la confederacion ${error.message}`)
+    const duplicado = await validarDuplicado(form, id)
+    if (duplicado) {
+        toast.error(duplicado)
     } else {
-        toast.success("Confederacion actualizada correctamente")
-        refresh()
+        const { error } = await updateConfederacion(id, form)
+        if (error) {
+            toast.error(`No se pudo actualizar la confederacion ${error.message}`)
+        } else {
+            toast.success("Confederacion actualizada correctamente")
+            refresh()
+        }
     }
 }
 

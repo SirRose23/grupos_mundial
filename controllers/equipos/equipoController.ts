@@ -2,7 +2,7 @@ import toast from 'react-hot-toast';
 import Swal from 'sweetalert2'
 import { Equipo, getEquipos, insertEquipo, updateEquipo, deleteEquipo } from '@/models/equipo/equipoModel';
 
-async function validarDuplicado(form: Equipo, excludeId?: Text) {
+async function validarDuplicado(form: Equipo, excludeId?: string) {
     const { data, error } = await getEquipos()
     if (error || !data) {
         return null
@@ -53,7 +53,7 @@ export async function addEquipo(form: Equipo, refresh: () => void) {
     }
 }
 
-    export async function editEquipo(id: Text, form: Equipo, refresh: () => void) {
+    export async function editEquipo(id: string, form: Equipo, refresh: () => void) {
         const duplicado = await validarDuplicado(form, id)
         if (duplicado) {
             toast.error(duplicado)
@@ -68,7 +68,7 @@ export async function addEquipo(form: Equipo, refresh: () => void) {
         }
     }
 
-    export async function removeEquipo(id: Text, refresh: () => void) {
+    export async function removeEquipo(id: string, refresh: () => void) {
         const result = await Swal.fire({
             title: "¿Está seguro de eliminar al equipo?",
             text: "No podrá revertirlo!",

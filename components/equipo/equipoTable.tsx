@@ -2,6 +2,7 @@
 import { Equipo } from "@/models/equipo/equipoModel"
 import { DetalleEquipo } from "@/models/detalle_equipo/detalleEquipoModel"
 import { Federacion } from "@/models/federacion/federacionModel"
+import { WORLD_CUP_2026 } from "@/components/equipo/eleementos/listadoPaises"
 
 interface Props {
     equipos: Equipo[]
@@ -25,6 +26,11 @@ export default function EquipoTable({ equipos, detalles, federaciones, onEdit, o
         const fed = federaciones.find(f => f.id === idFed);
         return fed ? fed.nombre : 'Desconocida';
     }
+
+    const getFlag = (code3: string) => {
+        const country = WORLD_CUP_2026.find(c => c.code3 === code3);
+        return country ? country.flag : "🏳️";
+    };
 
     return (
         <div className="card shadow-sm">
@@ -52,7 +58,10 @@ export default function EquipoTable({ equipos, detalles, federaciones, onEdit, o
                                 return (
                                     <tr key={e.id?.toString()}>
                                         <td className="fw-bold">{e.id?.toString()}</td>
-                                        <td>{e.nombre_pais}</td>
+                                        <td>
+                                            <span className="me-2 fs-5">{getFlag(e.id?.toString() || '')}</span>
+                                            {e.nombre_pais}
+                                        </td>
                                         <td>
                                             <span className="badge rounded-pill bg-secondary">
                                                 #{e.ranking_fifa}

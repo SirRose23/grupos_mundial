@@ -1,13 +1,18 @@
 'use client'
 import { Grupo } from "@/models/grupo/grupoModel"
+import { DetalleGrupo } from "@/models/detalle_grupo/detalleGrupoModel"
+import { Equipo } from "@/models/equipo/equipoModel"
+import { WORLD_CUP_2026 } from "@/components/equipo/eleementos/listadoPaises"
 
 interface Props {
     grupos: Grupo[]
+    detalles: DetalleGrupo[]
+    equipos: Equipo[]
     onEdit: (g: Grupo) => void
     onDelete: (id: number) => void
 }
 
-export default function GrupoTable({ grupos, onEdit, onDelete }: Props) {
+export default function GrupoTable({ grupos, detalles, equipos, onEdit, onDelete }: Props) {
 
     const formatFecha = (fecha?: string) => {
         if (!fecha) return 'N/A';
@@ -16,6 +21,17 @@ export default function GrupoTable({ grupos, onEdit, onDelete }: Props) {
             month: 'long',
             year: 'numeric'
         });
+    }
+
+    const getFlag = (code3: string) => {
+        const country = WORLD_CUP_2026.find(c => c.code3 === code3);
+        return country ? country.flag : "🏳️";
+    };
+
+    const getEquiposDelGrupo = (idGrupo?: number) => {
+        if (!idGrupo) return [];
+        const asignaciones = detalles.filter(d => d.id_grupo === idGrupo);
+        return asignaciones.map(a => equipos.find(e => e.id === a.id_equipo)).filter(Boolean) as Equipo[];
     }
 
     return (
@@ -29,7 +45,7 @@ export default function GrupoTable({ grupos, onEdit, onDelete }: Props) {
                         <tr>
                             <th style={{ width: '10%' }}>ID</th>
                             <th style={{ width: '25%' }}>Grupo</th>
-                            <th style={{ width: '40%' }}>Descripción</th>
+                            <th style={{ width: '40%' }}>Equipos Asignados</th>
                             <th style={{ width: '15%' }}>Creado</th>
                             <th style={{ width: '10%', textAlign: 'center' }}>Acciones</th>
                         </tr>
@@ -44,8 +60,19 @@ export default function GrupoTable({ grupos, onEdit, onDelete }: Props) {
                                             {g.nombre}
                                         </span>
                                     </td>
-                                    <td className="text-truncate" style={{ maxWidth: '200px' }}>
-                                        {g.descripcion || <span className="text-muted italic">Sin descripción</span>}
+                                    <td>
+                                        <div className="d-flex flex-wrap gap-2">
+                                            {getEquiposDelGrupo(g.id).length > 0 ? (
+                                                getEquiposDelGrupo(g.id).map(eq => (
+                                                    <span key={eq.id} className="badge bg-light text-dark border p-2 d-flex align-items-center" title={eq.nombre_pais}>
+                                                        <span className="fs-5 me-1">{getFlag(eq.id || '')}</span>
+                                                        <span className="fw-bold">{eq.id}</span>
+                                                    </span>
+                                                ))
+                                            ) : (
+                                                <span className="text-muted small italic">Sin equipos asignados</span>
+                                            )}
+                                        </div>
                                     </td>
                                     <td className="small">
                                         {formatFecha(g.created_at)}

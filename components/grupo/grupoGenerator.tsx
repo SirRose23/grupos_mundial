@@ -1,6 +1,7 @@
 'use client'
 import { useState } from "react"
 import { generarEstructuraGrupos, guardarGruposAutomaticos } from "@/controllers/grupo/grupoController"
+import { WORLD_CUP_2026 } from "@/components/equipo/eleementos/listadoPaises"
 
 interface Props {
     refresh: () => void
@@ -10,6 +11,11 @@ export default function GrupoGenerator({ refresh }: Props) {
     const [cantidad, setCantidad] = useState<number>(4);
     const [preview, setPreview] = useState<any[] | null>(null);
     const [loading, setLoading] = useState(false);
+
+    const getFlag = (code3: string) => {
+        const country = WORLD_CUP_2026.find(c => c.code3 === code3);
+        return country ? country.flag : "🏳️";
+    };
 
     const handleGenerarPreview = async () => {
         const estructura = await generarEstructuraGrupos(cantidad);
@@ -67,7 +73,10 @@ export default function GrupoGenerator({ refresh }: Props) {
                                         <ul className="list-group list-group-flush">
                                             {grupo.equipos.map((eq: any) => (
                                                 <li key={eq.id} className="list-group-item d-flex justify-content-between align-items-center">
-                                                    {eq.nombre_pais}
+                                                    <span className="fw-medium">
+                                                        <span className="me-2 fs-5">{getFlag(eq.id)}</span>
+                                                        {eq.nombre_pais}
+                                                    </span>
                                                     <span className="badge bg-light text-dark border">#{eq.ranking_fifa}</span>
                                                 </li>
                                             ))}

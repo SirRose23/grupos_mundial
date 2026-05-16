@@ -12,7 +12,7 @@ export async function getGrupos() {
 }
 
 export async function insertGrupo(grupo: Grupo) {
-    return await supabase.from('grupo').insert(grupo)
+    return await supabase.from('grupo').insert(grupo).select()
 }
 
 export async function updateGrupo(id: number, grupo: Grupo) {

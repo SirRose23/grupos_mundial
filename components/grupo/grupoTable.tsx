@@ -77,9 +77,10 @@ export default function GrupoTable({ grupos, detalles, equipos, onEdit, onDelete
                                     <td className="small">
                                         {formatFecha(g.created_at)}
                                     </td>
-                                    <td className="text-center">
+                                    <td>
+                                        <div className="d-flex flex-column flex-md-row justify-content-center gap-2">
                                             <button
-                                                className="btn btn-sm btn-outline-warning me-2"
+                                                className="btn btn-sm btn-outline-warning"
                                                 onClick={() => onEdit(g)}
                                                 title="Editar"
                                             >
@@ -92,6 +93,7 @@ export default function GrupoTable({ grupos, detalles, equipos, onEdit, onDelete
                                             >
                                                 <i className="bi bi-trash"></i>
                                             </button>
+                                        </div>
                                     </td>
                                 </tr>
                             ))

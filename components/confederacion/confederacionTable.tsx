@@ -30,21 +30,23 @@ export default function ConfederacionTable({ confederaciones, onEdit, onDelete }
                                     <td>{c.id}</td>
                                     <td>{c.nombre}</td>
                                     <td>{c.region}</td>
-                                    <td className="text-center">
-                                        <button 
-                                            className="btn btn-sm btn-outline-warning me-2"
-                                            onClick={() => onEdit(c)}
-                                            title="Editar"
-                                        >
-                                            <i className="bi bi-pencil"></i>
-                                        </button>
-                                        <button 
-                                            className="btn btn-sm btn-outline-danger"
-                                            onClick={() => c.id && onDelete(c.id)}
-                                            title="Eliminar"
-                                        >
-                                            <i className="bi bi-trash"></i>
-                                        </button>
+                                    <td>
+                                        <div className="d-flex flex-column flex-md-row justify-content-center gap-2">
+                                            <button 
+                                                className="btn btn-sm btn-outline-warning"
+                                                onClick={() => onEdit(c)}
+                                                title="Editar"
+                                            >
+                                                <i className="bi bi-pencil"></i>
+                                            </button>
+                                            <button 
+                                                className="btn btn-sm btn-outline-danger"
+                                                onClick={() => c.id && onDelete(c.id)}
+                                                title="Eliminar"
+                                            >
+                                                <i className="bi bi-trash"></i>
+                                            </button>
+                                        </div>
                                     </td>
                                 </tr>
                             ))

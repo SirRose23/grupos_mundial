@@ -1,0 +1,141 @@
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:wght@400;500&display=swap');
+
+.wc-nav {
+    font-family: 'DM Sans', sans-serif;
+    background: #0a1628;
+    border-bottom: 2px solid #c8102e;
+    position: relative;
+    overflow: hidden;
+    padding: 0 24px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 64px;
+    gap: 16px;
+    /* Evita que se solape al hacer scroll */
+    z-index: 1020;
+    width: 100%;
+}
+
+/* La clase fixed-top de bootstrap o custom para mantenerla arriba */
+.wc-nav.sticky-top {
+    position: sticky;
+    top: 0;
+}
+
+.wc-stripe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background: linear-gradient(90deg, #c8102e 0%, #ffffff 33%, #002868 66%, #c8102e 100%);
+}
+
+.wc-brand {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    text-decoration: none;
+    flex-shrink: 0;
+}
+
+.wc-trophy {
+    font-size: 22px;
+    line-height: 1;
+}
+
+.wc-brand-text {
+    display: flex;
+    flex-direction: column;
+    line-height: 1.1;
+}
+
+.wc-brand-main {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 18px;
+    letter-spacing: 1.5px;
+    color: #ffffff;
+}
+
+.wc-brand-sub {
+    font-size: 9px;
+    letter-spacing: 2px;
+    color: #c8102e;
+    text-transform: uppercase;
+    font-weight: 500;
+}
+
+.wc-divider {
+    width: 1px;
+    height: 32px;
+    background: rgba(255, 255, 255, 0.12);
+    flex-shrink: 0;
+}
+
+.wc-tabs {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    flex: 1;
+    justify-content: flex-end;
+}
+
+.wc-tab {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    padding: 7px 14px;
+    border-radius: 6px;
+    border: 1px solid transparent;
+    background: transparent;
+    color: rgba(255, 255, 255, 0.55);
+    font-family: 'DM Sans', sans-serif;
+    font-size: 13px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.18s ease;
+    white-space: nowrap;
+    letter-spacing: 0.2px;
+}
+
+.wc-tab:hover {
+    color: rgba(255, 255, 255, 0.9);
+    background: rgba(255, 255, 255, 0.06);
+    border-color: rgba(255, 255, 255, 0.1);
+}
+
+.wc-tab--active {
+    color: #ffffff;
+    background: #c8102e;
+    border-color: #c8102e;
+}
+
+.wc-tab--active:hover {
+    background: #e0112f;
+}
+
+.wc-tab--grupos.wc-tab--active {
+    background: #1a6b2a;
+    border-color: #1a6b2a;
+}
+
+.wc-tab--grupos.wc-tab--active:hover {
+    background: #1e7d31;
+}
+
+.wc-badge {
+    background: rgba(200, 16, 46, 0.25);
+    color: #ff6b7a;
+    font-size: 9px;
+    font-weight: 700;
+    padding: 1px 5px;
+    border-radius: 10px;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+}
+
+.wc-tab--active .wc-badge {
+    background: rgba(255, 255, 255, 0.2);
+    color: #fff;
+}

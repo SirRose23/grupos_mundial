@@ -1,49 +1,73 @@
 import toast from 'react-hot-toast';
 import Swal from 'sweetalert2'
-import { Grupo, getGrupos, insertGrupo, updateGrupo, deleteGrupo } from '@/models/grupo/grupoModel';
-import { getEquipos } from '@/models/equipo/equipoModel';
+import { Grupo, getGrupos, insertGrupo, deleteGrupo } from '@/models/grupo/grupoModel';
+import { getEquipos, Equipo } from '@/models/equipo/equipoModel';
+import { insertDetalleGrupo } from '@/models/detalle_grupo/detalleGrupoModel';
 
-async function validarDuplicado(form: Grupo, excludeId?: number) {
-    const { data, error } = await getGrupos()
-    if (error || !data) {
-        return null
+export function shuffleEquipos(array: Equipo[]) {
+    const newArray = [...array];
+    for (let i = newArray.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [newArray[i], newArray[j]] = [newArray[j], newArray[i]];
     }
-
-    const registros = excludeId ? data.filter(e => e.id !== excludeId) : data
-
-    const duplicado = registros.find(e =>
-        e.nombre === form.nombre
-    )
-
-    if (duplicado) {
-        return 'Ya existe un grupo con ese nombre'
-    } else {
-        return null
-    }
+    return newArray;
 }
 
-async function validarDivisionGrupos() {
-    const { data: equipos, error: errorEquipos } = await getEquipos()
-    if (errorEquipos || !equipos) {
-        return 'No se pudo verificar la cantidad de equipos'
+export async function generarEstructuraGrupos(cantidadGrupos: number) {
+    const { data: equipos, error } = await getEquipos();
+
+    if (error || !equipos) {
+        toast.error("No se pudieron obtener los equipos");
+        return null;
     }
 
-    const { data: grupos, error: errorGrupos } = await getGrupos()
-    if (errorGrupos || !grupos) {
-        return 'No se pudo verificar la cantidad de grupos'
+    if (equipos.length % cantidadGrupos !== 0) {
+        toast.error(`No es posible dividir ${equipos.length} equipos en ${cantidadGrupos} grupos de forma equitativa.`);
+        return null;
     }
 
-    const totalEquipos = equipos.length
-    const totalGrupos = grupos.length + 1
+    const equiposMezclados = shuffleEquipos(equipos);
+    const tamañoGrupo = equipos.length / cantidadGrupos;
+    const estructura = [];
 
-    if (totalEquipos === 0) {
-        return 'No hay equipos registrados para crear grupos'
+    for (let i = 0; i < cantidadGrupos; i++) {
+        const nombreGrupo = `Grupo ${String.fromCharCode(65 + i)}`;
+        const inicio = i * tamañoGrupo;
+        const fin = inicio + tamañoGrupo;
+        estructura.push({
+            nombre: nombreGrupo,
+            equipos: equiposMezclados.slice(inicio, fin)
+        });
     }
 
-    if (totalEquipos % totalGrupos !== 0) {
-        return `No se puede crear el grupo: ${totalEquipos} equipos no se pueden dividir en ${totalGrupos} grupos iguales`
-    } else {
-        return null
+    return estructura;
+}
+
+export async function guardarGruposAutomaticos(estructura: any[], refresh: () => void) {
+    try {
+        for (const item of estructura) {
+            const { data: nuevoGrupo, error: errorG } = await insertGrupo({
+                nombre: item.nombre,
+                descripcion: `Generado automáticamente el ${new Date().toLocaleDateString()}`
+            });
+
+            if (errorG) throw new Error(`Error al crear ${item.nombre}`);
+
+            const grupoId = (nuevoGrupo as any)[0].id;
+
+            for (const eq of item.equipos) {
+                const { error: errorD } = await insertDetalleGrupo({
+                    id_grupo: grupoId,
+                    id_equipo: eq.id
+                });
+                if (errorD) throw new Error(`Error al asignar ${eq.nombre_pais}`);
+            }
+        }
+
+        toast.success("¡Grupos generados y guardados con éxito!");
+        refresh();
+    } catch (e: any) {
+        toast.error(e.message || "Error en la generación masiva");
     }
 }
 
@@ -56,50 +80,15 @@ export async function fetchGrupos(setGrupo: (e: Grupo[]) => void) {
     }
 }
 
-export async function addGrupo(form: Grupo, refresh: () => void) {
-    const divisionInvalida = await validarDivisionGrupos()
-    if (divisionInvalida) {
-        toast.error(divisionInvalida)
-    } else {
-        const duplicado = await validarDuplicado(form)
-        if (duplicado) {
-            toast.error(duplicado)
-        } else {
-            const { error } = await insertGrupo(form)
-            if (error) {
-                toast.error(`No se pudo registrar el grupo ${error.message}`)
-            } else {
-                toast.success('Grupo registrado correctamente')
-                refresh()
-            }
-        }
-    }
-}
-
-export async function editGrupo(id: number, form: Grupo, refresh: () => void) {
-    const duplicado = await validarDuplicado(form, id)
-    if (duplicado) {
-        toast.error(duplicado)
-    } else {
-        const { error } = await updateGrupo(id, form)
-        if (error) {
-            toast.error(`No se pudo actualizar el grupo ${error.message}`)
-        } else {
-            toast.success('Grupo actualizado correctamente')
-            refresh()
-        }
-    }
-}
-
 export async function removeGrupo(id: number, refresh: () => void) {
     const result = await Swal.fire({
         title: "¿Está seguro de eliminar el grupo?",
-        text: "No podrá revertirlo!",
+        text: "¡Se perderán las asignaciones de equipos de este grupo!",
         icon: "warning",
         showCancelButton: true,
         confirmButtonColor: "#3085d6",
         cancelButtonColor: "#d33",
-        confirmButtonText: "Si, eliminemoslo!"
+        confirmButtonText: "Si, eliminar"
     })
 
     if (result.isConfirmed) {

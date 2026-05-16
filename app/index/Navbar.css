@@ -137,3 +137,40 @@
     background: rgba(255, 255, 255, 0.2);
     color: #fff;
 }
+
+@media (max-width: 768px) {
+    .wc-nav {
+        flex-direction: column;
+        height: auto;
+        padding: 15px 15px 0;
+        gap: 12px;
+    }
+
+    .wc-brand {
+        width: 100%;
+        justify-content: center;
+    }
+
+    .wc-divider {
+        display: none;
+    }
+
+    .wc-tabs {
+        width: 100%;
+        overflow-x: auto;
+        justify-content: flex-start;
+        padding-bottom: 15px;
+        -ms-overflow-style: none;
+        scrollbar-width: none;
+    }
+
+    .wc-tabs::-webkit-scrollbar {
+        display: none;
+    }
+
+    .wc-tab {
+        flex-shrink: 0;
+        font-size: 13px;
+        padding: 8px 14px;
+    }
+}

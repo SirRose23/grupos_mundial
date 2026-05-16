@@ -34,14 +34,16 @@ export default function ConfederacionTable({ confederaciones, onEdit, onDelete }
                                         <button 
                                             className="btn btn-sm btn-outline-warning me-2"
                                             onClick={() => onEdit(c)}
+                                            title="Editar"
                                         >
-                                            <i className="bi bi-pencil"></i> Editar
+                                            <i className="bi bi-pencil"></i>
                                         </button>
                                         <button 
                                             className="btn btn-sm btn-outline-danger"
                                             onClick={() => c.id && onDelete(c.id)}
+                                            title="Eliminar"
                                         >
-                                            <i className="bi bi-trash"></i> Eliminar
+                                            <i className="bi bi-trash"></i>
                                         </button>
                                     </td>
                                 </tr>

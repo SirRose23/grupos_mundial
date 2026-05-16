@@ -78,22 +78,20 @@ export default function GrupoTable({ grupos, detalles, equipos, onEdit, onDelete
                                         {formatFecha(g.created_at)}
                                     </td>
                                     <td className="text-center">
-                                        <div className="btn-group">
                                             <button
-                                                className="btn btn-sm btn-outline-primary"
+                                                className="btn btn-sm btn-outline-warning me-2"
                                                 onClick={() => onEdit(g)}
                                                 title="Editar"
                                             >
-                                                <i className="bi bi-pencil-fill">Editar</i>
+                                                <i className="bi bi-pencil"></i>
                                             </button>
                                             <button
                                                 className="btn btn-sm btn-outline-danger"
                                                 onClick={() => g.id && onDelete(g.id)}
                                                 title="Eliminar"
                                             >
-                                                <i className="bi bi-trash-fill">Eliminar</i>
+                                                <i className="bi bi-trash"></i>
                                             </button>
-                                        </div>
                                     </td>
                                 </tr>
                             ))

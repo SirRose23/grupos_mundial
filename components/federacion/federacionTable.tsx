@@ -49,12 +49,14 @@ export default function FederacionTable({ federaciones, confederaciones, onEdit,
                                         <button 
                                             className="btn btn-sm btn-outline-warning me-2"
                                             onClick={() => onEdit(f)}
+                                            title="Editar"
                                         >
                                             <i className="bi bi-pencil"></i>
                                         </button>
                                         <button 
                                             className="btn btn-sm btn-outline-danger"
                                             onClick={() => f.id && onDelete(f.id)}
+                                            title="Eliminar"
                                         >
                                             <i className="bi bi-trash"></i>
                                         </button>

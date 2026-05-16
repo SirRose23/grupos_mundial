@@ -78,14 +78,16 @@ export default function EquipoTable({ equipos, detalles, federaciones, onEdit, o
                                             <button 
                                                 className="btn btn-sm btn-outline-warning me-2"
                                                 onClick={() => onEdit(e, detalle)}
+                                                title="Editar"
                                             >
-                                                Editar
+                                                <i className="bi bi-pencil"></i>
                                             </button>
                                             <button 
                                                 className="btn btn-sm btn-outline-danger"
                                                 onClick={() => e.id && onDelete(e.id.toString())}
+                                                title="Eliminar"
                                             >
-                                                Eliminar
+                                                <i className="bi bi-trash"></i>
                                             </button>
                                         </td>
                                     </tr>

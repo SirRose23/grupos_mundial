@@ -3,6 +3,7 @@ import { FormEvent, ChangeEvent, Dispatch, SetStateAction } from "react"
 import { Equipo } from "@/models/equipo/equipoModel"
 import { DetalleEquipo } from "@/models/detalle_equipo/detalleEquipoModel"
 import { Federacion } from "@/models/federacion/federacionModel"
+import { WorldCupSelect, Country } from "@/components/equipo/eleementos/listadoPaises"
 
 interface Props {
     form: Equipo
@@ -40,6 +41,20 @@ export default function EquipoForm({ form, setForm, detalleForm, setDetalleForm,
             <div className="card-body">
                 <form onSubmit={onSubmit}>
                     <div className="row">
+                        <div className="col-md-12 mb-3">
+                            <label className="form-label fw-bold">Selección</label>
+                            <WorldCupSelect
+                                value={form.id || ''}
+                                onChange={(c: Country | null) => {
+                                    if (c) {
+                                        setForm(prev => ({ ...prev, id: c.code3, nombre_pais: c.name }));
+                                    } else {
+                                        setForm(prev => ({ ...prev, id: '', nombre_pais: '' }));
+                                    }
+                                }}
+                                disabled={!!editId}
+                            />
+                        </div>
                         <div className="col-md-3 mb-3">
                             <label className="form-label fw-bold">Código</label>
                             <input

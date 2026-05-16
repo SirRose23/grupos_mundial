@@ -1,6 +1,149 @@
 @import "tailwindcss";
 
 body {
-  background-color: #f8f9fa;
-  color: #212529;
+  background-color: #f4f6f9;
+  color: #0a1628;
+  font-family: 'DM Sans', sans-serif;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: 'Bebas Neue', sans-serif;
+  letter-spacing: 1px;
+}
+
+/* Tarjetas (Cards) */
+.card {
+  border: none !important;
+  border-radius: 12px;
+  box-shadow: 0 8px 24px rgba(10, 22, 40, 0.08);
+  overflow: hidden;
+  margin-bottom: 2rem;
+}
+
+.card-header {
+  background-color: #0a1628 !important;
+  color: #ffffff !important;
+  border-bottom: none;
+  border-top: 4px solid #c8102e;
+  padding: 1.2rem 1.5rem;
+}
+
+.card-header h5 {
+  margin: 0;
+  font-size: 1.6rem;
+  letter-spacing: 1.5px;
+  color: #ffffff;
+}
+
+/* Botones Principales */
+.btn-primary {
+  background-color: #c8102e !important;
+  border-color: #c8102e !important;
+  font-weight: 500;
+  border-radius: 8px;
+  padding: 0.6rem 1.4rem;
+  transition: all 0.2s ease;
+}
+
+.btn-primary:hover {
+  background-color: #a10d25 !important;
+  border-color: #a10d25 !important;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(200, 16, 46, 0.3);
+}
+
+/* Botones Secundarios / Éxito (Sorteo) */
+.btn-success {
+  background-color: #1a6b2a !important;
+  border-color: #1a6b2a !important;
+  border-radius: 8px;
+  font-weight: 500;
+}
+
+.btn-success:hover {
+  background-color: #145220 !important;
+  box-shadow: 0 4px 12px rgba(26, 107, 42, 0.3);
+}
+
+/* Inputs de Formularios */
+.form-control,
+.form-select {
+  border-radius: 8px;
+  border: 1.5px solid #ced4da;
+  padding: 0.6rem 1rem;
+  font-size: 0.95rem;
+}
+
+.form-control:focus,
+.form-select:focus {
+  border-color: #c8102e;
+  box-shadow: 0 0 0 0.25rem rgba(200, 16, 46, 0.15);
+}
+
+.form-label {
+  font-weight: 600;
+  color: #0a1628;
+  font-size: 0.9rem;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+/* Tablas */
+.table {
+  margin-bottom: 0;
+}
+
+.table-responsive {
+  border-radius: 0 0 12px 12px;
+}
+
+.table thead th {
+  background-color: #f8f9fa !important;
+  color: #0a1628 !important;
+  font-weight: 700;
+  text-transform: uppercase;
+  font-size: 0.8rem;
+  letter-spacing: 0.5px;
+  border-bottom: 2px solid #e9ecef;
+  padding: 1.2rem 1rem;
+}
+
+.table tbody td {
+  padding: 1rem;
+  vertical-align: middle;
+  color: #495057;
+  font-size: 0.95rem;
+}
+
+.table-hover tbody tr:hover {
+  background-color: rgba(200, 16, 46, 0.03);
+}
+
+/* Etiquetas (Badges) */
+.badge.bg-secondary {
+  background-color: #f1f3f5 !important;
+  color: #495057 !important;
+  font-weight: 700;
+  border: 1px solid #dee2e6;
+}
+
+.badge.bg-dark {
+  background-color: #0a1628 !important;
+}
+
+/* Generador de Grupos: Listas */
+.list-group-item {
+  border-color: #f1f3f5;
+  padding: 1rem 1.25rem;
+}
+
+/* Ajuste del título del index */
+main h2 {
+  font-size: 2.5rem;
+  color: #0a1628;
 }

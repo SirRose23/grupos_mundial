@@ -10,65 +10,335 @@ export interface Country {
 
 export const WORLD_CUP_2026: Country[] = [
   // CONCACAF (8)
-  { code: "US", code3: "USA", name: "Estados Unidos", flag: "🇺🇸", confederation: "CONCACAF" },
-  { code: "MX", code3: "MEX", name: "México", flag: "🇲🇽", confederation: "CONCACAF" },
-  { code: "CA", code3: "CAN", name: "Canadá", flag: "🇨🇦", confederation: "CONCACAF" },
-  { code: "PA", code3: "PAN", name: "Panamá", flag: "🇵🇦", confederation: "CONCACAF" },
-  { code: "HT", code3: "HAI", name: "Haití", flag: "🇭🇹", confederation: "CONCACAF" },
-  { code: "CW", code3: "CUW", name: "Curazao", flag: "🇨🇼", confederation: "CONCACAF" },
-  { code: "JM", code3: "JAM", name: "Jamaica", flag: "🇯🇲", confederation: "CONCACAF" },
-  { code: "SR", code3: "SUR", name: "Surinam", flag: "🇸🇷", confederation: "CONCACAF" },
+  {
+    code: "US",
+    code3: "USA",
+    name: "Estados Unidos",
+    flag: "🇺🇸",
+    confederation: "CONCACAF",
+  },
+  {
+    code: "MX",
+    code3: "MEX",
+    name: "México",
+    flag: "🇲🇽",
+    confederation: "CONCACAF",
+  },
+  {
+    code: "CA",
+    code3: "CAN",
+    name: "Canadá",
+    flag: "🇨🇦",
+    confederation: "CONCACAF",
+  },
+  {
+    code: "PA",
+    code3: "PAN",
+    name: "Panamá",
+    flag: "🇵🇦",
+    confederation: "CONCACAF",
+  },
+  {
+    code: "HT",
+    code3: "HAI",
+    name: "Haití",
+    flag: "🇭🇹",
+    confederation: "CONCACAF",
+  },
+  {
+    code: "CW",
+    code3: "CUW",
+    name: "Curazao",
+    flag: "🇨🇼",
+    confederation: "CONCACAF",
+  },
+  {
+    code: "JM",
+    code3: "JAM",
+    name: "Jamaica",
+    flag: "🇯🇲",
+    confederation: "CONCACAF",
+  },
+  {
+    code: "SR",
+    code3: "SUR",
+    name: "Surinam",
+    flag: "🇸🇷",
+    confederation: "CONCACAF",
+  },
   // CONMEBOL (6)
-  { code: "AR", code3: "ARG", name: "Argentina", flag: "🇦🇷", confederation: "CONMEBOL" },
-  { code: "BR", code3: "BRA", name: "Brasil", flag: "🇧🇷", confederation: "CONMEBOL" },
-  { code: "CO", code3: "COL", name: "Colombia", flag: "🇨🇴", confederation: "CONMEBOL" },
-  { code: "EC", code3: "ECU", name: "Ecuador", flag: "🇪🇨", confederation: "CONMEBOL" },
-  { code: "UY", code3: "URU", name: "Uruguay", flag: "🇺🇾", confederation: "CONMEBOL" },
-  { code: "PY", code3: "PAR", name: "Paraguay", flag: "🇵🇾", confederation: "CONMEBOL" },
-  { code: "BO", code3: "BOL", name: "Bolivia", flag: "🇧🇴", confederation: "CONMEBOL" },
+  {
+    code: "AR",
+    code3: "ARG",
+    name: "Argentina",
+    flag: "🇦🇷",
+    confederation: "CONMEBOL",
+  },
+  {
+    code: "BR",
+    code3: "BRA",
+    name: "Brasil",
+    flag: "🇧🇷",
+    confederation: "CONMEBOL",
+  },
+  {
+    code: "CO",
+    code3: "COL",
+    name: "Colombia",
+    flag: "🇨🇴",
+    confederation: "CONMEBOL",
+  },
+  {
+    code: "EC",
+    code3: "ECU",
+    name: "Ecuador",
+    flag: "🇪🇨",
+    confederation: "CONMEBOL",
+  },
+  {
+    code: "UY",
+    code3: "URU",
+    name: "Uruguay",
+    flag: "🇺🇾",
+    confederation: "CONMEBOL",
+  },
+  {
+    code: "PY",
+    code3: "PAR",
+    name: "Paraguay",
+    flag: "🇵🇾",
+    confederation: "CONMEBOL",
+  },
+  {
+    code: "BO",
+    code3: "BOL",
+    name: "Bolivia",
+    flag: "🇧🇴",
+    confederation: "CONMEBOL",
+  },
   // UEFA (16)
-  { code: "ES", code3: "ESP", name: "España", flag: "🇪🇸", confederation: "UEFA" },
-  { code: "FR", code3: "FRA", name: "Francia", flag: "🇫🇷", confederation: "UEFA" },
-  { code: "DE", code3: "GER", name: "Alemania", flag: "🇩🇪", confederation: "UEFA" },
-  { code: "GB-ENG", code3: "ENG", name: "Inglaterra", flag: "🏴󠁧󠁢󠁥󠁮󠁧󠁿", confederation: "UEFA" },
-  { code: "PT", code3: "POR", name: "Portugal", flag: "🇵🇹", confederation: "UEFA" },
-  { code: "NL", code3: "NED", name: "Países Bajos", flag: "🇳🇱", confederation: "UEFA" },
-  { code: "BE", code3: "BEL", name: "Bélgica", flag: "🇧🇪", confederation: "UEFA" },
-  { code: "HR", code3: "CRO", name: "Croacia", flag: "🇭🇷", confederation: "UEFA" },
-  { code: "NO", code3: "NOR", name: "Noruega", flag: "🇳🇴", confederation: "UEFA" },
-  { code: "AT", code3: "AUT", name: "Austria", flag: "🇦🇹", confederation: "UEFA" },
-  { code: "CH", code3: "SUI", name: "Suiza", flag: "🇨🇭", confederation: "UEFA" },
-  { code: "GB-SCT", code3: "SCO", name: "Escocia", flag: "🏴󠁧󠁢󠁳󠁣󠁴󠁿", confederation: "UEFA" },
-  { code: "TR", code3: "TUR", name: "Turquía", flag: "🇹🇷", confederation: "UEFA" },
-  { code: "BA", code3: "BIH", name: "Bosnia y Herzegovina", flag: "🇧🇦", confederation: "UEFA" },
-  { code: "SE", code3: "SWE", name: "Suecia", flag: "🇸🇪", confederation: "UEFA" },
-  { code: "CZ", code3: "CZE", name: "República Checa", flag: "🇨🇿", confederation: "UEFA" },
+  {
+    code: "ES",
+    code3: "ESP",
+    name: "España",
+    flag: "🇪🇸",
+    confederation: "UEFA",
+  },
+  {
+    code: "FR",
+    code3: "FRA",
+    name: "Francia",
+    flag: "🇫🇷",
+    confederation: "UEFA",
+  },
+  {
+    code: "DE",
+    code3: "GER",
+    name: "Alemania",
+    flag: "🇩🇪",
+    confederation: "UEFA",
+  },
+  {
+    code: "GB-ENG",
+    code3: "ENG",
+    name: "Inglaterra",
+    flag: "🏴󠁧󠁢󠁥󠁮󠁧󠁿",
+    confederation: "UEFA",
+  },
+  {
+    code: "PT",
+    code3: "POR",
+    name: "Portugal",
+    flag: "🇵🇹",
+    confederation: "UEFA",
+  },
+  {
+    code: "NL",
+    code3: "NED",
+    name: "Países Bajos",
+    flag: "🇳🇱",
+    confederation: "UEFA",
+  },
+  {
+    code: "BE",
+    code3: "BEL",
+    name: "Bélgica",
+    flag: "🇧🇪",
+    confederation: "UEFA",
+  },
+  {
+    code: "HR",
+    code3: "CRO",
+    name: "Croacia",
+    flag: "🇭🇷",
+    confederation: "UEFA",
+  },
+  {
+    code: "NO",
+    code3: "NOR",
+    name: "Noruega",
+    flag: "🇳🇴",
+    confederation: "UEFA",
+  },
+  {
+    code: "AT",
+    code3: "AUT",
+    name: "Austria",
+    flag: "🇦🇹",
+    confederation: "UEFA",
+  },
+  {
+    code: "CH",
+    code3: "SUI",
+    name: "Suiza",
+    flag: "🇨🇭",
+    confederation: "UEFA",
+  },
+  {
+    code: "GB-SCT",
+    code3: "SCO",
+    name: "Escocia",
+    flag: "🏴󠁧󠁢󠁳󠁣󠁴󠁿",
+    confederation: "UEFA",
+  },
+  {
+    code: "TR",
+    code3: "TUR",
+    name: "Turquía",
+    flag: "🇹🇷",
+    confederation: "UEFA",
+  },
+  {
+    code: "BA",
+    code3: "BIH",
+    name: "Bosnia y Herzegovina",
+    flag: "🇧🇦",
+    confederation: "UEFA",
+  },
+  {
+    code: "SE",
+    code3: "SWE",
+    name: "Suecia",
+    flag: "🇸🇪",
+    confederation: "UEFA",
+  },
+  {
+    code: "CZ",
+    code3: "CZE",
+    name: "República Checa",
+    flag: "🇨🇿",
+    confederation: "UEFA",
+  },
   // CAF - África (10)
-  { code: "MA", code3: "MAR", name: "Marruecos", flag: "🇲🇦", confederation: "CAF" },
+  {
+    code: "MA",
+    code3: "MAR",
+    name: "Marruecos",
+    flag: "🇲🇦",
+    confederation: "CAF",
+  },
   { code: "TN", code3: "TUN", name: "Túnez", flag: "🇹🇳", confederation: "CAF" },
-  { code: "EG", code3: "EGY", name: "Egipto", flag: "🇪🇬", confederation: "CAF" },
-  { code: "DZ", code3: "ALG", name: "Argelia", flag: "🇩🇿", confederation: "CAF" },
+  {
+    code: "EG",
+    code3: "EGY",
+    name: "Egipto",
+    flag: "🇪🇬",
+    confederation: "CAF",
+  },
+  {
+    code: "DZ",
+    code3: "ALG",
+    name: "Argelia",
+    flag: "🇩🇿",
+    confederation: "CAF",
+  },
   { code: "GH", code3: "GHA", name: "Ghana", flag: "🇬🇭", confederation: "CAF" },
-  { code: "CV", code3: "CPV", name: "Cabo Verde", flag: "🇨🇻", confederation: "CAF" },
-  { code: "ZA", code3: "RSA", name: "Sudáfrica", flag: "🇿🇦", confederation: "CAF" },
-  { code: "CI", code3: "CIV", name: "Costa de Marfil", flag: "🇨🇮", confederation: "CAF" },
-  { code: "SN", code3: "SEN", name: "Senegal", flag: "🇸🇳", confederation: "CAF" },
-  { code: "CD", code3: "COD", name: "Rep. Dem. del Congo", flag: "🇨🇩", confederation: "CAF" },
+  {
+    code: "CV",
+    code3: "CPV",
+    name: "Cabo Verde",
+    flag: "🇨🇻",
+    confederation: "CAF",
+  },
+  {
+    code: "ZA",
+    code3: "RSA",
+    name: "Sudáfrica",
+    flag: "🇿🇦",
+    confederation: "CAF",
+  },
+  {
+    code: "CI",
+    code3: "CIV",
+    name: "Costa de Marfil",
+    flag: "🇨🇮",
+    confederation: "CAF",
+  },
+  {
+    code: "SN",
+    code3: "SEN",
+    name: "Senegal",
+    flag: "🇸🇳",
+    confederation: "CAF",
+  },
+  {
+    code: "CD",
+    code3: "COD",
+    name: "Rep. Dem. del Congo",
+    flag: "🇨🇩",
+    confederation: "CAF",
+  },
   // AFC - Asia (9)
   { code: "JP", code3: "JPN", name: "Japón", flag: "🇯🇵", confederation: "AFC" },
   { code: "IR", code3: "IRN", name: "Irán", flag: "🇮🇷", confederation: "AFC" },
-  { code: "UZ", code3: "UZB", name: "Uzbekistán", flag: "🇺🇿", confederation: "AFC" },
-  { code: "KR", code3: "KOR", name: "Corea del Sur", flag: "🇰🇷", confederation: "AFC" },
-  { code: "JO", code3: "JOR", name: "Jordania", flag: "🇯🇴", confederation: "AFC" },
-  { code: "AU", code3: "AUS", name: "Australia", flag: "🇦🇺", confederation: "AFC" },
+  {
+    code: "UZ",
+    code3: "UZB",
+    name: "Uzbekistán",
+    flag: "🇺🇿",
+    confederation: "AFC",
+  },
+  {
+    code: "KR",
+    code3: "KOR",
+    name: "Corea del Sur",
+    flag: "🇰🇷",
+    confederation: "AFC",
+  },
+  {
+    code: "JO",
+    code3: "JOR",
+    name: "Jordania",
+    flag: "🇯🇴",
+    confederation: "AFC",
+  },
+  {
+    code: "AU",
+    code3: "AUS",
+    name: "Australia",
+    flag: "🇦🇺",
+    confederation: "AFC",
+  },
   { code: "QA", code3: "QAT", name: "Qatar", flag: "🇶🇦", confederation: "AFC" },
-  { code: "SA", code3: "KSA", name: "Arabia Saudita", flag: "🇸🇦", confederation: "AFC" },
+  {
+    code: "SA",
+    code3: "KSA",
+    name: "Arabia Saudita",
+    flag: "🇸🇦",
+    confederation: "AFC",
+  },
   { code: "IQ", code3: "IRQ", name: "Irak", flag: "🇮🇶", confederation: "AFC" },
   // OFC - Oceanía (1)
-  { code: "NZ", code3: "NZL", name: "Nueva Zelanda", flag: "🇳🇿", confederation: "OFC" },
+  {
+    code: "NZ",
+    code3: "NZL",
+    name: "Nueva Zelanda",
+    flag: "🇳🇿",
+    confederation: "OFC",
+  },
 ];
 
-const CONF_COLORS: Record<string, string> = {
+export const CONF_COLORS: Record<string, string> = {
   CONCACAF: "#3b82f6",
   CONMEBOL: "#f59e0b",
   UEFA: "#6366f1",
@@ -108,7 +378,10 @@ export function WorldCupSelect({
 
   useEffect(() => {
     const handler = (e: MouseEvent) => {
-      if (containerRef.current && !containerRef.current.contains(e.target as Node)) {
+      if (
+        containerRef.current &&
+        !containerRef.current.contains(e.target as Node)
+      ) {
         setOpen(false);
         setSearch("");
       }
@@ -132,10 +405,15 @@ export function WorldCupSelect({
     onChange?.(null);
   };
 
-  const confederations = Array.from(new Set(WORLD_CUP_2026.map((c) => c.confederation)));
+  const confederations = Array.from(
+    new Set(WORLD_CUP_2026.map((c) => c.confederation)),
+  );
 
   return (
-    <div ref={containerRef} style={{ position: "relative", width: "100%", maxWidth: 400 }}>
+    <div
+      ref={containerRef}
+      style={{ position: "relative", width: "100%", maxWidth: 400 }}
+    >
       {/* Trigger button */}
       <button
         type="button"
@@ -153,17 +431,29 @@ export function WorldCupSelect({
           cursor: disabled ? "not-allowed" : "pointer",
           fontSize: 15,
           color: selected ? "#111827" : "#9ca3af",
-          boxShadow: open ? "0 0 0 3px rgba(99,102,241,0.12)" : "0 1px 3px rgba(0,0,0,0.06)",
+          boxShadow: open
+            ? "0 0 0 3px rgba(99,102,241,0.12)"
+            : "0 1px 3px rgba(0,0,0,0.06)",
           transition: "all 0.15s",
           gap: 8,
           boxSizing: "border-box",
         }}
       >
-        <span style={{ display: "flex", alignItems: "center", gap: 10, flex: 1, minWidth: 0 }}>
+        <span
+          style={{
+            display: "flex",
+            alignItems: "center",
+            gap: 10,
+            flex: 1,
+            minWidth: 0,
+          }}
+        >
           {selected ? (
             <>
               <span style={{ fontSize: 22 }}>{selected.flag}</span>
-              <span style={{ fontWeight: 600, color: "#111827" }}>{selected.name}</span>
+              <span style={{ fontWeight: 600, color: "#111827" }}>
+                {selected.name}
+              </span>
               <span
                 style={{
                   background: CONF_COLORS[selected.confederation] + "22",
@@ -184,11 +474,23 @@ export function WorldCupSelect({
             <span style={{ fontSize: 14 }}>{placeholder}</span>
           )}
         </span>
-        <span style={{ display: "flex", alignItems: "center", gap: 6, flexShrink: 0 }}>
+        <span
+          style={{
+            display: "flex",
+            alignItems: "center",
+            gap: 6,
+            flexShrink: 0,
+          }}
+        >
           {selected && !disabled && (
             <span
               onClick={handleClear}
-              style={{ color: "#9ca3af", cursor: "pointer", fontSize: 14, padding: "0 2px" }}
+              style={{
+                color: "#9ca3af",
+                cursor: "pointer",
+                fontSize: 14,
+                padding: "0 2px",
+              }}
               title="Limpiar"
             >
               ✕
@@ -276,7 +578,8 @@ export function WorldCupSelect({
                   padding: "3px 9px",
                   border: `1.5px solid ${filterConf === conf ? CONF_COLORS[conf] : "#e5e7eb"}`,
                   borderRadius: 20,
-                  background: filterConf === conf ? CONF_COLORS[conf] + "22" : "#fff",
+                  background:
+                    filterConf === conf ? CONF_COLORS[conf] + "22" : "#fff",
                   color: filterConf === conf ? CONF_COLORS[conf] : "#6b7280",
                   fontSize: 11,
                   fontWeight: 600,
@@ -300,7 +603,14 @@ export function WorldCupSelect({
             }}
           >
             {filtered.length === 0 ? (
-              <li style={{ padding: "14px 16px", color: "#9ca3af", fontSize: 13, textAlign: "center" }}>
+              <li
+                style={{
+                  padding: "14px 16px",
+                  color: "#9ca3af",
+                  fontSize: 13,
+                  textAlign: "center",
+                }}
+              >
                 Sin resultados
               </li>
             ) : (
@@ -321,14 +631,18 @@ export function WorldCupSelect({
                     }}
                     onMouseEnter={(e) => {
                       if (!isSelected)
-                        (e.currentTarget as HTMLElement).style.background = "#f9fafb";
+                        (e.currentTarget as HTMLElement).style.background =
+                          "#f9fafb";
                     }}
                     onMouseLeave={(e) => {
                       if (!isSelected)
-                        (e.currentTarget as HTMLElement).style.background = "transparent";
+                        (e.currentTarget as HTMLElement).style.background =
+                          "transparent";
                     }}
                   >
-                    <span style={{ fontSize: 20, width: 28, textAlign: "center" }}>
+                    <span
+                      style={{ fontSize: 20, width: 28, textAlign: "center" }}
+                    >
                       {country.flag}
                     </span>
                     <span
@@ -365,7 +679,9 @@ export function WorldCupSelect({
             )}
           </ul>
 
-          <div style={{ padding: "6px 14px 8px", borderTop: "1px solid #f3f4f6" }}>
+          <div
+            style={{ padding: "6px 14px 8px", borderTop: "1px solid #f3f4f6" }}
+          >
             <span style={{ fontSize: 11, color: "#9ca3af" }}>
               {filtered.length} de 48 selecciones — FIFA World Cup 2026
             </span>
@@ -380,8 +696,21 @@ export default function App() {
   const [country, setCountry] = useState<Country | null>(null);
 
   return (
-    <div style={{ padding: 40, fontFamily: "system-ui, sans-serif", maxWidth: 500 }}>
-      <div style={{ marginBottom: 6, display: "flex", alignItems: "center", gap: 8 }}>
+    <div
+      style={{
+        padding: 40,
+        fontFamily: "system-ui, sans-serif",
+        maxWidth: 500,
+      }}
+    >
+      <div
+        style={{
+          marginBottom: 6,
+          display: "flex",
+          alignItems: "center",
+          gap: 8,
+        }}
+      >
         <span style={{ fontSize: 22 }}>🏆</span>
         <h2 style={{ margin: 0, fontSize: 20, color: "#111827" }}>
           FIFA World Cup 2026

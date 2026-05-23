@@ -1,24 +1,28 @@
-import { supabase } from "@/lib/supabase"
+import { supabase } from "@/lib/supabase";
 
 export interface Grupo {
-    id?: number
-    nombre: string
-    descripcion: string
-    created_at?: string
+  id?: number;
+  nombre: string;
+  descripcion: string;
+  created_at?: string;
 }
 
 export async function getGrupos() {
-    return await supabase.from('grupo').select('*')
+  return await supabase.from("grupo").select("*");
 }
 
 export async function insertGrupo(grupo: Grupo) {
-    return await supabase.from('grupo').insert(grupo).select()
+  return await supabase.from("grupo").insert(grupo).select();
 }
 
 export async function updateGrupo(id: number, grupo: Grupo) {
-    return await supabase.from('grupo').update(grupo).eq('id', id)
+  return await supabase.from("grupo").update(grupo).eq("id", id);
 }
 
 export async function deleteGrupo(id: number) {
-    return await supabase.from('grupo').delete().eq('id', id)
+  return await supabase.from("grupo").delete().eq("id", id);
+}
+
+export async function deleteAllGrupos() {
+  return await supabase.from("grupo").delete().neq("id", 0);
 }

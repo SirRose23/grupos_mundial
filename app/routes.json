@@ -1,0 +1,37 @@
+[
+  {
+    "name": "Home",
+    "path": "/",
+    "file": "app/page.tsx"
+  },
+  {
+    "name": "Dashboard",
+    "path": "/index",
+    "file": "app/index/index.tsx"
+  },
+  {
+    "name": "Confederaciones",
+    "path": "/confederaciones",
+    "file": "app/confederaciones/page.tsx"
+  },
+  {
+    "name": "Federaciones",
+    "path": "/federaciones",
+    "file": "app/federaciones/page.tsx"
+  },
+  {
+    "name": "Equipos",
+    "path": "/equipos",
+    "file": "app/equipos/page.tsx"
+  },
+  {
+    "name": "Grupos",
+    "path": "/grupos",
+    "file": "app/grupos/page.tsx"
+  },
+  {
+    "name": "Resumen",
+    "path": "/resumen",
+    "file": "app/resumen/page.tsx"
+  }
+]

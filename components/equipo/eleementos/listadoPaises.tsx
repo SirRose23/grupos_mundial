@@ -6,6 +6,8 @@ export interface Country {
   name: string;
   flag: string;
   confederation: string;
+  federacionNombre: string;
+  region: string;
 }
 
 export const WORLD_CUP_2026: Country[] = [
@@ -16,6 +18,8 @@ export const WORLD_CUP_2026: Country[] = [
     name: "Estados Unidos",
     flag: "🇺🇸",
     confederation: "CONCACAF",
+    federacionNombre: "United States Soccer Federation (USSF)",
+    region: "América del Norte",
   },
   {
     code: "MX",
@@ -23,6 +27,8 @@ export const WORLD_CUP_2026: Country[] = [
     name: "México",
     flag: "🇲🇽",
     confederation: "CONCACAF",
+    federacionNombre: "Federación Mexicana de Fútbol (FMF)",
+    region: "América del Norte",
   },
   {
     code: "CA",
@@ -30,6 +36,8 @@ export const WORLD_CUP_2026: Country[] = [
     name: "Canadá",
     flag: "🇨🇦",
     confederation: "CONCACAF",
+    federacionNombre: "Canada Soccer",
+    region: "América del Norte",
   },
   {
     code: "PA",
@@ -37,6 +45,8 @@ export const WORLD_CUP_2026: Country[] = [
     name: "Panamá",
     flag: "🇵🇦",
     confederation: "CONCACAF",
+    federacionNombre: "Federación Panameña de Fútbol (FEPAFUT)",
+    region: "América Central",
   },
   {
     code: "HT",
@@ -44,6 +54,8 @@ export const WORLD_CUP_2026: Country[] = [
     name: "Haití",
     flag: "🇭🇹",
     confederation: "CONCACAF",
+    federacionNombre: "Fédération Haïtienne de Football (FHF)",
+    region: "Caribe",
   },
   {
     code: "CW",
@@ -51,6 +63,8 @@ export const WORLD_CUP_2026: Country[] = [
     name: "Curazao",
     flag: "🇨🇼",
     confederation: "CONCACAF",
+    federacionNombre: "Federashon Futbòl Kòrsou (FFK)",
+    region: "Caribe",
   },
   {
     code: "JM",
@@ -58,6 +72,8 @@ export const WORLD_CUP_2026: Country[] = [
     name: "Jamaica",
     flag: "🇯🇲",
     confederation: "CONCACAF",
+    federacionNombre: "Jamaica Football Federation (JFF)",
+    region: "Caribe",
   },
   {
     code: "SR",
@@ -65,14 +81,18 @@ export const WORLD_CUP_2026: Country[] = [
     name: "Surinam",
     flag: "🇸🇷",
     confederation: "CONCACAF",
+    federacionNombre: "Surinaamse Voetbal Bond (SVB)",
+    region: "Caribe",
   },
-  // CONMEBOL (6)
+  // CONMEBOL (7)
   {
     code: "AR",
     code3: "ARG",
     name: "Argentina",
     flag: "🇦🇷",
     confederation: "CONMEBOL",
+    federacionNombre: "Asociación del Fútbol Argentino (AFA)",
+    region: "América del Sur",
   },
   {
     code: "BR",
@@ -80,6 +100,8 @@ export const WORLD_CUP_2026: Country[] = [
     name: "Brasil",
     flag: "🇧🇷",
     confederation: "CONMEBOL",
+    federacionNombre: "Confederação Brasileira de Futebol (CBF)",
+    region: "América del Sur",
   },
   {
     code: "CO",
@@ -87,6 +109,8 @@ export const WORLD_CUP_2026: Country[] = [
     name: "Colombia",
     flag: "🇨🇴",
     confederation: "CONMEBOL",
+    federacionNombre: "Federación Colombiana de Fútbol (FCF)",
+    region: "América del Sur",
   },
   {
     code: "EC",
@@ -94,6 +118,8 @@ export const WORLD_CUP_2026: Country[] = [
     name: "Ecuador",
     flag: "🇪🇨",
     confederation: "CONMEBOL",
+    federacionNombre: "Federación Ecuatoriana de Fútbol (FEF)",
+    region: "América del Sur",
   },
   {
     code: "UY",
@@ -101,6 +127,8 @@ export const WORLD_CUP_2026: Country[] = [
     name: "Uruguay",
     flag: "🇺🇾",
     confederation: "CONMEBOL",
+    federacionNombre: "Asociación Uruguaya de Fútbol (AUF)",
+    region: "América del Sur",
   },
   {
     code: "PY",
@@ -108,6 +136,8 @@ export const WORLD_CUP_2026: Country[] = [
     name: "Paraguay",
     flag: "🇵🇾",
     confederation: "CONMEBOL",
+    federacionNombre: "Asociación Paraguaya de Fútbol (APF)",
+    region: "América del Sur",
   },
   {
     code: "BO",
@@ -115,6 +145,8 @@ export const WORLD_CUP_2026: Country[] = [
     name: "Bolivia",
     flag: "🇧🇴",
     confederation: "CONMEBOL",
+    federacionNombre: "Federación Boliviana de Fútbol (FBF)",
+    region: "América del Sur",
   },
   // UEFA (16)
   {
@@ -123,6 +155,8 @@ export const WORLD_CUP_2026: Country[] = [
     name: "España",
     flag: "🇪🇸",
     confederation: "UEFA",
+    federacionNombre: "Real Federación Española de Fútbol (RFEF)",
+    region: "Europa",
   },
   {
     code: "FR",
@@ -130,6 +164,8 @@ export const WORLD_CUP_2026: Country[] = [
     name: "Francia",
     flag: "🇫🇷",
     confederation: "UEFA",
+    federacionNombre: "Fédération Française de Football (FFF)",
+    region: "Europa",
   },
   {
     code: "DE",
@@ -137,6 +173,8 @@ export const WORLD_CUP_2026: Country[] = [
     name: "Alemania",
     flag: "🇩🇪",
     confederation: "UEFA",
+    federacionNombre: "Deutscher Fußball-Bund (DFB)",
+    region: "Europa",
   },
   {
     code: "GB-ENG",
@@ -144,6 +182,8 @@ export const WORLD_CUP_2026: Country[] = [
     name: "Inglaterra",
     flag: "🏴󠁧󠁢󠁥󠁮󠁧󠁿",
     confederation: "UEFA",
+    federacionNombre: "The Football Association (FA)",
+    region: "Europa",
   },
   {
     code: "PT",
@@ -151,6 +191,8 @@ export const WORLD_CUP_2026: Country[] = [
     name: "Portugal",
     flag: "🇵🇹",
     confederation: "UEFA",
+    federacionNombre: "Federação Portuguesa de Futebol (FPF)",
+    region: "Europa",
   },
   {
     code: "NL",
@@ -158,6 +200,8 @@ export const WORLD_CUP_2026: Country[] = [
     name: "Países Bajos",
     flag: "🇳🇱",
     confederation: "UEFA",
+    federacionNombre: "Koninklijke Nederlandse Voetbalbond (KNVB)",
+    region: "Europa",
   },
   {
     code: "BE",
@@ -165,6 +209,8 @@ export const WORLD_CUP_2026: Country[] = [
     name: "Bélgica",
     flag: "🇧🇪",
     confederation: "UEFA",
+    federacionNombre: "Union Royale Belge des Sociétés de Football (URBSFA)",
+    region: "Europa",
   },
   {
     code: "HR",
@@ -172,6 +218,8 @@ export const WORLD_CUP_2026: Country[] = [
     name: "Croacia",
     flag: "🇭🇷",
     confederation: "UEFA",
+    federacionNombre: "Hrvatski Nogometni Savez (HNS)",
+    region: "Europa",
   },
   {
     code: "NO",
@@ -179,6 +227,8 @@ export const WORLD_CUP_2026: Country[] = [
     name: "Noruega",
     flag: "🇳🇴",
     confederation: "UEFA",
+    federacionNombre: "Norges Fotballforbund (NFF)",
+    region: "Europa",
   },
   {
     code: "AT",
@@ -186,6 +236,8 @@ export const WORLD_CUP_2026: Country[] = [
     name: "Austria",
     flag: "🇦🇹",
     confederation: "UEFA",
+    federacionNombre: "Österreichischer Fußball-Bund (ÖFB)",
+    region: "Europa",
   },
   {
     code: "CH",
@@ -193,6 +245,8 @@ export const WORLD_CUP_2026: Country[] = [
     name: "Suiza",
     flag: "🇨🇭",
     confederation: "UEFA",
+    federacionNombre: "Schweizerischer Fussballverband (SFV)",
+    region: "Europa",
   },
   {
     code: "GB-SCT",
@@ -200,6 +254,8 @@ export const WORLD_CUP_2026: Country[] = [
     name: "Escocia",
     flag: "🏴󠁧󠁢󠁳󠁣󠁴󠁿",
     confederation: "UEFA",
+    federacionNombre: "Scottish Football Association (SFA)",
+    region: "Europa",
   },
   {
     code: "TR",
@@ -207,6 +263,8 @@ export const WORLD_CUP_2026: Country[] = [
     name: "Turquía",
     flag: "🇹🇷",
     confederation: "UEFA",
+    federacionNombre: "Türkiye Futbol Federasyonu (TFF)",
+    region: "Europa",
   },
   {
     code: "BA",
@@ -214,6 +272,8 @@ export const WORLD_CUP_2026: Country[] = [
     name: "Bosnia y Herzegovina",
     flag: "🇧🇦",
     confederation: "UEFA",
+    federacionNombre: "Fudbalski Savez Bosne i Hercegovine (FSBIH)",
+    region: "Europa",
   },
   {
     code: "SE",
@@ -221,6 +281,8 @@ export const WORLD_CUP_2026: Country[] = [
     name: "Suecia",
     flag: "🇸🇪",
     confederation: "UEFA",
+    federacionNombre: "Svenska Fotbollförbundet (SvFF)",
+    region: "Europa",
   },
   {
     code: "CZ",
@@ -228,6 +290,8 @@ export const WORLD_CUP_2026: Country[] = [
     name: "República Checa",
     flag: "🇨🇿",
     confederation: "UEFA",
+    federacionNombre: "Fotbalová asociace České republiky (FAČR)",
+    region: "Europa",
   },
   // CAF - África (10)
   {
@@ -236,14 +300,26 @@ export const WORLD_CUP_2026: Country[] = [
     name: "Marruecos",
     flag: "🇲🇦",
     confederation: "CAF",
+    federacionNombre: "Fédération Royale Marocaine de Football (FRMF)",
+    region: "África del Norte",
   },
-  { code: "TN", code3: "TUN", name: "Túnez", flag: "🇹🇳", confederation: "CAF" },
+  {
+    code: "TN",
+    code3: "TUN",
+    name: "Túnez",
+    flag: "🇹🇳",
+    confederation: "CAF",
+    federacionNombre: "Fédération Tunisienne de Football (FTF)",
+    region: "África del Norte",
+  },
   {
     code: "EG",
     code3: "EGY",
     name: "Egipto",
     flag: "🇪🇬",
     confederation: "CAF",
+    federacionNombre: "Egyptian Football Association (EFA)",
+    region: "África del Norte",
   },
   {
     code: "DZ",
@@ -251,14 +327,26 @@ export const WORLD_CUP_2026: Country[] = [
     name: "Argelia",
     flag: "🇩🇿",
     confederation: "CAF",
+    federacionNombre: "Fédération Algérienne de Football (FAF)",
+    region: "África del Norte",
   },
-  { code: "GH", code3: "GHA", name: "Ghana", flag: "🇬🇭", confederation: "CAF" },
+  {
+    code: "GH",
+    code3: "GHA",
+    name: "Ghana",
+    flag: "🇬🇭",
+    confederation: "CAF",
+    federacionNombre: "Ghana Football Association (GFA)",
+    region: "África Occidental",
+  },
   {
     code: "CV",
     code3: "CPV",
     name: "Cabo Verde",
     flag: "🇨🇻",
     confederation: "CAF",
+    federacionNombre: "Federação Cabo-verdiana de Futebol (FCF)",
+    region: "África Occidental",
   },
   {
     code: "ZA",
@@ -266,6 +354,8 @@ export const WORLD_CUP_2026: Country[] = [
     name: "Sudáfrica",
     flag: "🇿🇦",
     confederation: "CAF",
+    federacionNombre: "South African Football Association (SAFA)",
+    region: "África del Sur",
   },
   {
     code: "CI",
@@ -273,6 +363,8 @@ export const WORLD_CUP_2026: Country[] = [
     name: "Costa de Marfil",
     flag: "🇨🇮",
     confederation: "CAF",
+    federacionNombre: "Fédération Ivoirienne de Football (FIF)",
+    region: "África Occidental",
   },
   {
     code: "SN",
@@ -280,6 +372,8 @@ export const WORLD_CUP_2026: Country[] = [
     name: "Senegal",
     flag: "🇸🇳",
     confederation: "CAF",
+    federacionNombre: "Fédération Sénégalaise de Football (FSF)",
+    region: "África Occidental",
   },
   {
     code: "CD",
@@ -287,16 +381,37 @@ export const WORLD_CUP_2026: Country[] = [
     name: "Rep. Dem. del Congo",
     flag: "🇨🇩",
     confederation: "CAF",
+    federacionNombre: "Fédération Congolaise de Football-Association (Fécofa)",
+    region: "África Central",
   },
   // AFC - Asia (9)
-  { code: "JP", code3: "JPN", name: "Japón", flag: "🇯🇵", confederation: "AFC" },
-  { code: "IR", code3: "IRN", name: "Irán", flag: "🇮🇷", confederation: "AFC" },
+  {
+    code: "JP",
+    code3: "JPN",
+    name: "Japón",
+    flag: "🇯🇵",
+    confederation: "AFC",
+    federacionNombre: "Japan Football Association (JFA)",
+    region: "Asia Oriental",
+  },
+  {
+    code: "IR",
+    code3: "IRN",
+    name: "Irán",
+    flag: "🇮🇷",
+    confederation: "AFC",
+    federacionNombre:
+      "Football Federation of the Islamic Republic of Iran (FFIRI)",
+    region: "Asia Occidental",
+  },
   {
     code: "UZ",
     code3: "UZB",
     name: "Uzbekistán",
     flag: "🇺🇿",
     confederation: "AFC",
+    federacionNombre: "Uzbekistan Football Association (UFA)",
+    region: "Asia Central",
   },
   {
     code: "KR",
@@ -304,6 +419,8 @@ export const WORLD_CUP_2026: Country[] = [
     name: "Corea del Sur",
     flag: "🇰🇷",
     confederation: "AFC",
+    federacionNombre: "Korea Football Association (KFA)",
+    region: "Asia Oriental",
   },
   {
     code: "JO",
@@ -311,6 +428,8 @@ export const WORLD_CUP_2026: Country[] = [
     name: "Jordania",
     flag: "🇯🇴",
     confederation: "AFC",
+    federacionNombre: "Jordan Football Association (JFA)",
+    region: "Asia Occidental",
   },
   {
     code: "AU",
@@ -318,16 +437,36 @@ export const WORLD_CUP_2026: Country[] = [
     name: "Australia",
     flag: "🇦🇺",
     confederation: "AFC",
+    federacionNombre: "Football Australia (FA)",
+    region: "Oceanía",
   },
-  { code: "QA", code3: "QAT", name: "Qatar", flag: "🇶🇦", confederation: "AFC" },
+  {
+    code: "QA",
+    code3: "QAT",
+    name: "Qatar",
+    flag: "🇶🇦",
+    confederation: "AFC",
+    federacionNombre: "Qatar Football Association (QFA)",
+    region: "Asia Occidental",
+  },
   {
     code: "SA",
     code3: "KSA",
     name: "Arabia Saudita",
     flag: "🇸🇦",
     confederation: "AFC",
+    federacionNombre: "Saudi Arabian Football Federation (SAFF)",
+    region: "Asia Occidental",
   },
-  { code: "IQ", code3: "IRQ", name: "Irak", flag: "🇮🇶", confederation: "AFC" },
+  {
+    code: "IQ",
+    code3: "IRQ",
+    name: "Irak",
+    flag: "🇮🇶",
+    confederation: "AFC",
+    federacionNombre: "Iraq Football Association (IFA)",
+    region: "Asia Occidental",
+  },
   // OFC - Oceanía (1)
   {
     code: "NZ",
@@ -335,6 +474,8 @@ export const WORLD_CUP_2026: Country[] = [
     name: "Nueva Zelanda",
     flag: "🇳🇿",
     confederation: "OFC",
+    federacionNombre: "New Zealand Football (NZF)",
+    region: "Oceanía",
   },
 ];
 
@@ -345,6 +486,16 @@ export const CONF_COLORS: Record<string, string> = {
   CAF: "#10b981",
   AFC: "#ef4444",
   OFC: "#8b5cf6",
+};
+
+/** Región geográfica oficial de cada confederación FIFA */
+export const CONF_REGIONS: Record<string, string> = {
+  UEFA: "Europa",
+  CONMEBOL: "América del Sur",
+  CONCACAF: "América del Norte, Central y Caribe",
+  CAF: "África",
+  AFC: "Asia",
+  OFC: "Oceanía",
 };
 
 interface CountrySelectProps {

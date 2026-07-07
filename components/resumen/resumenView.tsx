@@ -6,8 +6,18 @@ import ConfederacionCards from "./components/confederacionCards";
 import DistribucionTable from "./components/distribucionTable";
 
 export default function ResumenView() {
-  const { grupos, equipos, grupoConf, confsActivas, confederacionStats } =
+  const { grupos, equipos, grupoConf, confsActivas, confederacionStats, loading } =
     useResumenData();
+
+  if (loading) {
+    return (
+      <div className="d-flex justify-content-center align-items-center py-5">
+        <div className="spinner-border text-danger" role="status">
+          <span className="visually-hidden">Cargando datos del mundial...</span>
+        </div>
+      </div>
+    );
+  }
 
   return (
     <div className="row g-4">

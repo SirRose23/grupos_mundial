@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import { Toaster } from "react-hot-toast";
 import "./globals.css";
+import Navbar from "./index/Navbar";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -43,7 +44,10 @@ export default function RootLayout({
       </head>
       <body className="min-h-full flex flex-col bg-light text-dark">
         <Toaster position="top-right" />
-        {children}
+        <Navbar />
+        <main className="container-fluid py-4 px-4">
+          {children}
+        </main>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" async></script>
       </body>
     </html>

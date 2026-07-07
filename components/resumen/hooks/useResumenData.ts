@@ -1,58 +1,113 @@
+"use client";
+
 import { useState, useEffect } from "react";
-import { Grupo } from "@/models/grupo/grupoModel";
-import { DetalleGrupo } from "@/models/detalle_grupo/detalleGrupoModel";
-import { Equipo } from "@/models/equipo/equipoModel";
 import { fetchGrupos } from "@/controllers/grupo/grupoController";
-import { fetchDetallesGrupo } from "@/controllers/detalle_grupo/detalleGrupoController";
 import { fetchEquipos } from "@/controllers/equipos/equipoController";
-import {
-  calcularEquiposPorConf,
-  calcularGrupoConf,
-  calcularConfsActivas,
-  calcularTopRankingPorConf,
-  buildConfederacionStats,
-} from "../utils/resumenUtils";
-import {
-  ConfederacionStats,
-  EquiposPorConf,
-  GrupoConf,
-} from "../types/resumenTypes";
+import { fetchConfederaciones } from "@/controllers/confederacion/confederacionController";
+import { WORLD_CUP_2026, CONF_COLORS } from "@/components/equipo/eleementos/listadoPaises";
+import { Equipo } from "@/models/equipo/equipoModel";
+import { Grupo } from "@/models/grupo/grupoModel";
+import { Confederacion } from "@/models/confederacion/confederacionModel";
+import { DetalleGrupo, getDetallesGrupo } from "@/models/detalle_grupo/detalleGrupoModel";
+import { ConfederacionStats } from "../types/resumenTypes";
+import toast from "react-hot-toast";
 
-export interface UseResumenDataReturn {
-  grupos: Grupo[];
-  equipos: Equipo[];
-  equiposPorConf: EquiposPorConf;
-  grupoConf: GrupoConf;
-  confsActivas: string[];
-  confederacionStats: ConfederacionStats[];
-}
+/** Ícono representativo para cada confederación */
+const CONF_ICONS: Record<string, string> = {
+  CONCACAF: "🌎",
+  CONMEBOL: "🌍",
+  UEFA: "🏰",
+  CAF: "🌍",
+  AFC: "🌏",
+  OFC: "🌊",
+};
 
-export function useResumenData(): UseResumenDataReturn {
+export function useResumenData() {
   const [grupos, setGrupos] = useState<Grupo[]>([]);
-  const [detalles, setDetalles] = useState<DetalleGrupo[]>([]);
   const [equipos, setEquipos] = useState<Equipo[]>([]);
+  const [confederaciones, setConfederaciones] = useState<Confederacion[]>([]);
+  const [detalles, setDetalles] = useState<DetalleGrupo[]>([]);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    fetchGrupos(setGrupos);
-    fetchDetallesGrupo(setDetalles);
-    fetchEquipos(setEquipos);
+    const loadData = async () => {
+      setLoading(true);
+      // Cargamos todo desde la base de datos en paralelo
+      const [, , , detalleResult] = await Promise.all([
+        fetchGrupos(setGrupos),
+        fetchEquipos(setEquipos),
+        fetchConfederaciones(setConfederaciones),
+        getDetallesGrupo(),
+      ]);
+
+      if (detalleResult.error) {
+        toast.error("No se pudo obtener la distribución de grupos");
+      } else {
+        setDetalles((detalleResult.data as DetalleGrupo[]) ?? []);
+      }
+
+      setLoading(false);
+    };
+    loadData();
   }, []);
 
-  const equiposPorConf = calcularEquiposPorConf(equipos);
-  const grupoConf = calcularGrupoConf(detalles, equipos);
-  const confsActivas = calcularConfsActivas(equiposPorConf);
-  const topRankingPorConf = calcularTopRankingPorConf(equiposPorConf);
-  const confederacionStats = buildConfederacionStats(
-    equiposPorConf,
-    topRankingPorConf
-  );
+  // 1. Nombres de confederaciones registradas en la BD
+  const confsActivas = confederaciones.map((c) => c.nombre);
+
+  // 2. Estadísticas de equipos por cada confederación de la BD
+  const confederacionStats: ConfederacionStats[] = confederaciones.map((c) => {
+    // Equipos que pertenecen a esta confederación según el listado maestro
+    const equiposConf = equipos.filter((e) => {
+      const info = WORLD_CUP_2026.find((p) => p.code3 === e.id);
+      return info?.confederation === c.nombre;
+    });
+
+    // Equipo mejor rankeado (menor número = mejor ranking)
+    const topEquipo =
+      equiposConf.length > 0
+        ? equiposConf.reduce((prev, curr) =>
+            (curr.ranking_fifa ?? Infinity) < (prev.ranking_fifa ?? Infinity)
+              ? curr
+              : prev
+          )
+        : null;
+
+    return {
+      nombre: c.nombre,
+      color: CONF_COLORS[c.nombre] ?? "#6c757d",
+      icon: CONF_ICONS[c.nombre] ?? "🏳️",
+      totalEquipos: equiposConf.length,
+      topEquipo,
+    };
+  });
+
+  // 3. Distribución de confederaciones por Grupo
+  // Construida a partir de detalle_grupo + WORLD_CUP_2026
+  const grupoConf: Record<number, Record<string, number>> = {};
+
+  grupos.forEach((g) => {
+    if (g.id == null) return;
+    grupoConf[g.id] = {};
+
+    // Filtramos los detalles que pertenecen a este grupo
+    const equiposDelGrupo = detalles.filter((d) => d.id_grupo === g.id);
+
+    equiposDelGrupo.forEach((d) => {
+      // Buscamos la confederación del equipo en el listado maestro
+      const info = WORLD_CUP_2026.find((p) => p.code3 === d.id_equipo);
+      const confName = info?.confederation;
+      if (confName) {
+        grupoConf[g.id!][confName] = (grupoConf[g.id!][confName] ?? 0) + 1;
+      }
+    });
+  });
 
   return {
     grupos,
     equipos,
-    equiposPorConf,
     grupoConf,
     confsActivas,
     confederacionStats,
+    loading,
   };
 }
